@@ -1,0 +1,287 @@
+/* ======================================================= */
+/* CSS RESPONSIF (PENDEKATAN DESKTOP-FIRST)        */
+/* ======================================================= */
+/* Style dasar di styles.css adalah untuk DESKTOP.       */
+/* Media query di bawah ini akan aktif di layar kecil.   */
+/* ======================================================= */
+
+/* == 1. TABLET (Potrait & Landscape) & DESKTOP KECIL == */
+/* Aturan ini berlaku untuk layar dengan lebar 1199.98px atau kurang. */
+@media (max-width: 1199.98px) {
+  /* --- Layout & Teks --- */
+  .hero-content h1 {
+    font-size: 3.5rem; /* Sedikit perkecil font judul utama */
+  }
+
+  .text-column h1,
+  .get-in-touch-title {
+    font-size: 2.2rem;
+  }
+
+  .features-section .section-title {
+    font-size: 2rem;
+  }
+
+  /* --- Grid --- */
+  /* Ubah grid 4 kolom menjadi 2 kolom */
+  .certifications-grid,
+  .clients-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .popular-content-grid {
+    grid-template-columns: 1fr; /* Tumpuk konten populer */
+    gap: 3rem;
+  }
+
+  .popular-articles-wrapper {
+    grid-template-columns: repeat(2, 1fr); /* Artikel populer tetap 2 kolom */
+  }
+
+  /* --- Alur Maklon --- */
+  .alur-maklon .step {
+    width: auto; /* Biarkan lebar langkah menyesuaikan */
+  }
+  .step:not(:last-child)::after,
+  .steps-container.reversed .step:not(:last-child)::before {
+    font-size: 1.5rem; /* Perkecil panah */
+  }
+}
+
+/* == 2. SMARTPHONE BESAR & TABLET (Potrait) == */
+/* Aturan ini berlaku untuk layar dengan lebar 991.98px atau kurang. */
+@media (max-width: 991.98px) {
+  /* --- Layout & Teks --- */
+  .stats-container,
+  .wujudkan-brand .hero-container {
+    flex-direction: column; /* Tumpuk elemen menjadi satu kolom */
+    text-align: center;
+    gap: 20px;
+  }
+
+  .products-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .products-section .header-left h2 {
+    text-align: center;
+  }
+
+  /* Tumpuk kolom kontak */
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .left-column {
+    text-align: center;
+    padding-right: 0;
+  }
+  .right-column {
+    width: 100%;
+  }
+
+  /* --- Grid --- */
+  .features-grid {
+    grid-template-columns: 1fr; /* Jadikan 1 kolom */
+  }
+
+  /* --- Alur Maklon --- */
+  .alur-maklon .steps-container {
+    flex-direction: column; /* Tumpuk langkah-langkah */
+    align-items: center;
+    gap: 40px;
+  }
+  /* Sembunyikan panah penghubung */
+  .step:not(:last-child)::after,
+  .steps-container.reversed .step:not(:last-child)::before {
+    display: none;
+  }
+}
+
+/* == 3. SMARTPHONE (Landscape & Potrait) == */
+/* Aturan ini berlaku untuk layar dengan lebar 767.98px atau kurang. */
+@media (max-width: 767.98px) {
+  /* ================================================== */
+  /* --- NAVIGASI & HAMBURGER (BAGIAN INI TIDAK DIUBAH SESUAI PERMINTAAN) --- */
+  .hamburger {
+    display: block; /* Tampilkan ikon hamburger */
+    z-index: 1001;
+  }
+
+  .nav-group-right {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: #1e633f;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    transition: right 0.4s ease-in-out;
+    z-index: 1000;
+  }
+
+  .nav-group-right.active {
+    right: 0;
+  }
+
+  .nav-group-right .nav-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav-group-right .nav-menu a {
+    font-size: 1.2rem;
+  }
+  /* ================================================== */
+
+  /* --- Layout & Teks --- */
+  .hero-section {
+    padding: 40px 20px;
+    justify-content: center; /* Pusatkan konten */
+    text-align: center;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-button {
+    position: static; /* Pindahkan tombol dari posisi absolut */
+    margin-top: 20px;
+  }
+
+  .stats-grid {
+    flex-direction: column; /* Tumpuk statistik */
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* --- Grid --- */
+  /* Semua grid utama menjadi 1 kolom */
+  .article-grid,
+  .popular-articles-wrapper,
+  .products-grid,
+  .mission-grid,
+  .certifications-grid,
+  .clients-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- Tombol --- */
+  /* Pindahkan tombol ke posisi yang lebih ramah mobile */
+  #scrollTopBtn {
+    left: 20px;
+    bottom: 20px;
+  }
+  .floating-whatsapp {
+    right: 20px;
+    bottom: 20px;
+  }
+
+  /* Letakkan kode ini di dalam blok @media (max-width: 767.98px) { ... } */
+
+  /* Mengubah latar belakang slider di mobile */
+  #section1,
+  #section2,
+  #section3 {
+    background-image: none !important; /* Menghapus gambar latar */
+  }
+
+  #section1 {
+    background-color: #e8f5e9; /* Warna latar untuk slide 1 (Contoh: hijau muda) */
+  }
+  #section2 {
+    background-color: #f0f4f8; /* Warna latar untuk slide 2 (Contoh: biru keabuan muda) */
+  }
+  #section3 {
+    background-color: #f3e5f5; /* Warna latar untuk slide 3 (Contoh: ungu muda) */
+  }
+
+  /* Penyesuaian warna teks jika diperlukan */
+  .hero-section .title-main,
+  .hero-section .title-main2,
+  .hero-section .title-background2 {
+    color: #1e633f; /* Pastikan warna tulisan utama tetap hijau */
+  }
+
+  .hero-section .title-background,
+  .hero-section h4 {
+    color: #333333; /* Pastikan warna tulisan sekunder tetap gelap */
+  }
+  /* Letakkan kode ini di dalam blok @media (max-width: 767.98px) { ... } */
+
+/* 1. Menghilangkan tombol "Selengkapnya" di slider mobile */
+.hero-section .hero-button {
+  display: none;
+}
+
+/* 2. Mengurangi ukuran tulisan di slider mobile */
+.hero-content h1 {
+  font-size: 2.2rem; /* Ukuran diperkecil lagi agar lebih ringkas */
+  line-height: 1.2; /* Menyesuaikan jarak baris */
+}
+
+.hero-content .title-background {
+  font-size: 1.8rem; /* Menyesuaikan ukuran font "MANUFACTURE" */
+}
+
+.hero-content h4 {
+  font-size: 0.9rem; /* Mengatur ukuran sub-judul di slide 2 & 3 */
+  line-height: 1.5;
+}
+}
+
+/* =============================================== */
+/* MEDIA QUERY UNTUK STATS SECTION */
+/* =============================================== */
+
+/* -- Tampilan Tablet (lebar 991px ke bawah) -- */
+@media (max-width: 991.98px) {
+  .stats-container {
+    /* Mengubah grid menjadi 2 kolom di tablet */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px; /* Memberi jarak yang cukup antar baris dan kolom */
+  }
+
+  /* SARAN: Agar konsisten, kita buat semua kotak rata tengah di tablet */
+  .stat-box1 {
+    text-align: center;
+  }
+}
+
+/* -- Tampilan HP (lebar 767px ke bawah) -- */
+@media (max-width: 767.98px) {
+  .stats-container {
+    /* Mengubah grid menjadi 1 kolom di HP */
+    grid-template-columns: 1fr;
+    gap: 35px; /* Jarak vertikal antar item */
+    padding: 25px; /* Sedikit mengurangi padding di layar kecil */
+  }
+
+  /*
+    CATATAN: 
+    Aturan 'text-align: center' untuk .stat-box1 dari media query tablet
+    akan otomatis berlaku juga di sini, jadi tidak perlu ditulis ulang.
+  */
+
+  /* Menyesuaikan ukuran font agar tidak terlalu besar di HP */
+  .stat-box1 p,
+  .stat-box p {
+    font-size: 20px;
+  }
+
+  .stat-box1 span,
+  .stat-box span {
+    font-size: 16px;
+  }
+
+  .stat-box .number {
+    font-size: 42px;
+  }
+
+  .stat-box .label {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - Eshbi</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/media.css" />
+    <style>
+      /* Gaya spesifik untuk halaman Blog */
+      .blog-header {
+        text-align: center;
+        padding: 50px 20px 30px 20px;
+        background-color: #f4f4f4;
+      }
+      .blog-header h1 {
+        color: #0a6847;
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .blog-header p {
+        font-size: 1.1rem;
+        color: #555;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      /* Mengatur tinggi slider agar tidak fullscreen */
+      .blog-slider-container {
+        position: relative;
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        /* HAPUS 'height' DAN GANTI DENGAN 'aspect-ratio' */
+        aspect-ratio: 16 / 9; /*<-- SOLUSINYA. Menjaga rasio 16:9 */
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+      .blog-slider-container .hero-section {
+        height: 100%; /* Membuat slide mengisi container */
+      }
+      .blog-slider-container .pagination {
+        bottom: 20px; /* Posisi pagination lebih dekat */
+      }
+      /* Kontainer untuk search bar */
+      .search-container {
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+      .search-box {
+        display: flex;
+        width: 100%;
+        max-width: 500px;
+        border: 1px solid #ddd;
+        border-radius: 50px;
+        overflow: hidden;
+      }
+      .search-box input {
+        border: none;
+        padding: 15px 25px;
+        font-size: 1rem;
+        width: 100%;
+        outline: none;
+      }
+      .search-box button {
+        border: none;
+        background-color: #2b8800;
+        color: white;
+        padding: 0 25px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        transition: background-color 0.3s ease;
+      }
+      .search-box button:hover {
+        background-color: #0a6847;
+      }
+      .article-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* DIKURANGI: Jarak antar kartu dibuat lebih rapat */
+        gap: 1.5rem;
+        /* DIKURANGI: Ruang di sekeliling grid dibuat lebih kecil */
+        padding: 2rem;
+        max-width: 1200px; /* DIKURANGI: Lebar maksimal grid juga bisa dikecilkan */
+        margin: 0 auto;
+      }
+
+      /* Gaya untuk setiap kartu artikel */
+      .article-card {
+        background-color: #ffffff;
+        border-radius: 12px; /* DIKURANGI: Sedikit mengurangi lengkungan sudut */
+        border: 1px solid #e0e0e0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Wadah untuk gambar */
+      .card-image-container {
+        position: relative;
+        background-color: #f0f0f0;
+        aspect-ratio: 16 / 10;
+      }
+
+      .article-card img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      /* Overlay untuk tanggal di atas gambar */
+      .date-overlay {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background-color: #1e633f;
+        color: #ffffff;
+        /* DIKURANGI: Padding di dalam overlay tanggal */
+        padding: 6px 12px;
+        border-radius: 6px;
+        /* DIKURANGI: Ukuran font tanggal */
+        font-size: 0.8rem;
+        font-weight: 600;
+        z-index: 2;
+      }
+
+      /* Konten di bawah gambar */
+      .card-content {
+        /* DIKURANGI: Padding di dalam konten kartu */
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      /* Judul artikel */
+      .card-title {
+        /* DIKURANGI: Ukuran font judul */
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #1e633f;
+        margin: 0 0 10px 0; /* DIKURANGI: Jarak bawah dari judul */
+      }
+
+      /* Deskripsi singkat artikel */
+      .card-excerpt {
+        /* DIKURANGI: Ukuran font deskripsi */
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.5;
+        margin: 0 0 20px 0;
+        flex-grow: 1;
+      }
+
+      /* Link "Baca Artikel" */
+      .card-read-more {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #888;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        align-self: flex-end;
+      }
+
+      .card-read-more:hover {
+        color: #1e633f;
+      }
+
+      .card-read-more:hover {
+        color: #1e633f; /* Warna berubah saat disentuh kursor */
+      }
+
+      .popular-section {
+        padding: 3rem 2rem;
+        max-width: 1400px;
+        margin: 60px auto 0 auto; /* Memberi jarak atas dari konten sebelumnya */
+      }
+
+      /* Pagination */
+      .pagination-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem; /* Jarak antar elemen navigasi */
+        margin-bottom: 3.5rem; /* Jarak dari navigasi ke konten di bawahnya */
+      }
+
+      .pagination-container .arrow {
+        font-size: 1.2rem;
+        color: #888;
+        text-decoration: none;
+        padding: 8px;
+      }
+
+      .pagination-container .page-number {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #555;
+        text-decoration: none;
+        width: 38px;
+        height: 38px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .pagination-container .page-number.active,
+      .pagination-container .page-number:hover {
+        background-color: #1e633f;
+        color: #ffffff;
+      }
+
+      /* Layout Grid untuk Konten (2 kolom) */
+      .popular-content-grid {
+        display: grid;
+        /* Kolom kiri 2x lebih besar dari kolom kanan */
+        grid-template-columns: 2fr 1fr;
+        gap: 4rem; /* Jarak antara kolom berita dan hastag */
+      }
+
+      /* Judul Section (Berita & Hastag) */
+      .section-heading {
+        font-size: 1.8rem;
+        color: #1e633f;
+        font-weight: 700;
+        margin: 0 0 1.5rem 0;
+        position: relative;
+        padding-bottom: 12px;
+      }
+
+      /* Garis bawah untuk judul */
+      .section-heading::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 300px;
+        height: 6px;
+        background-color: #1e633f;
+      }
+
+      /* Wrapper untuk kartu di kolom kiri */
+      .popular-articles-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      /* CATATAN PENTING:
+   Anda tidak perlu menambahkan CSS untuk .article-card lagi.
+   Kartu berita populer di sini akan otomatis menggunakan gaya (style) 
+   dari kartu artikel yang sudah kita buat sebelumnya.
+*/
+
+      /* Kolom Kanan - Hashtags */
+      .popular-hashtags .hashtags-wrapper {
+        display: flex;
+        flex-wrap: wrap; /* Agar tag turun ke baris baru jika tidak muat */
+        gap: 0.8rem 1rem; /* Jarak vertikal dan horizontal antar tag */
+      }
+
+      .hashtag-pill {
+        background-color: #1e633f;
+        color: white;
+        padding: 10px 22px;
+        border-radius: 50px; /* Membuat tag menjadi "pill" */
+        font-size: 0.95rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header id="header-container"></header>
+
+    <main>
+      <section class="blog-header">
+        <h1>BERITA TERBARU</h1>
+        <p>
+          Kumpulan berita & artikel terupdate seputar maklon dan industri
+          kecantikan
+        </p>
+      </section>
+
+      <div class="slider-container blog-slider-container">
+        <div class="slides-wrapper">
+          <section
+            class="hero-section"
+            style="background-image: url(assets/images/background-hero3.jpg)"
+          ></section>
+          <section
+            class="hero-section"
+            style="background-image: url(assets/images/background-hero.jpg)"
+          ></section>
+          <section
+            class="hero-section"
+            style="background-image: url(assets/images/background-hero2.jpg)"
+          ></section>
+        </div>
+        <div class="pagination">
+          <button class="dot active" data-slide="0"></button>
+          <button class="dot" data-slide="1"></button>
+          <button class="dot" data-slide="2"></button>
+        </div>
+      </div>
+
+      <section class="search-container">
+        <div class="search-box">
+          <input type="text" placeholder="Cari Artikel..." />
+          <button type="submit" aria-label="Cari">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </section>
+      <div class="article-grid">
+        <article class="article-card">
+          <div class="card-image-container">
+            <img
+              src="https://via.placeholder.com/400x250/e0e0e0/cccccc?text="
+              alt="Placeholder Gambar Artikel"
+            />
+            <div class="date-overlay">
+              <span>28 Maret 2025</span>
+            </div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Judul Artikel atau Berita</h3>
+            <p class="card-excerpt">
+              Lorem ipsum is a dummy or placeholder text commonly used in
+              graphic design, publishing, and web ...
+            </p>
+            <a href="#" class="card-read-more">Baca Artikel ></a>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <div class="card-image-container">
+            <img
+              src="https://via.placeholder.com/400x250/e0e0e0/cccccc?text="
+              alt="Placeholder Gambar Artikel"
+            />
+            <div class="date-overlay">
+              <span>27 Maret 2025</span>
+            </div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Judul Artikel atau Berita</h3>
+            <p class="card-excerpt">
+              Lorem ipsum is a dummy or placeholder text commonly used in
+              graphic design, publishing, and web ...
+            </p>
+            <a href="#" class="card-read-more">Baca Artikel ></a>
+          </div>
+        </article>
+      </div>
+      <section class="popular-section">
+        <nav class="pagination-container">
+          <a href="#" class="arrow">&lt;</a>
+          <a href="#" class="page-number active">1</a>
+          <a href="#" class="page-number">2</a>
+          <a href="#" class="page-number">3</a>
+          <a href="#" class="arrow">&gt;</a>
+        </nav>
+
+        <div class="popular-content-grid">
+          <div class="popular-articles">
+            <h2 class="section-heading">BERITA TERPOPULER</h2>
+            <div class="popular-articles-wrapper">
+              <article class="article-card">
+                <div class="card-image-container">
+                  <img
+                    src="https://via.placeholder.com/400x250/e0e0e0/cccccc?text="
+                    alt="Placeholder Gambar Artikel"
+                  />
+                </div>
+                <div class="card-content">
+                  <h3 class="card-title">Judul Artikel atau Berita</h3>
+                  <p class="card-excerpt">
+                    Lorem ipsum is a dummy or placeholder text commonly used in
+                    graphic design, publishing, and web ...
+                  </p>
+                  <a href="#" class="card-read-more">Baca Artikel ></a>
+                </div>
+              </article>
+
+              <article class="article-card">
+                <div class="card-image-container">
+                  <img
+                    src="https://via.placeholder.com/400x250/e0e0e0/cccccc?text="
+                    alt="Placeholder Gambar Artikel"
+                  />
+                </div>
+                <div class="card-content">
+                  <h3 class="card-title">Judul Artikel atau Berita</h3>
+                  <p class="card-excerpt">
+                    Lorem ipsum is a dummy or placeholder text commonly used in
+                    graphic design, publishing, and web ...
+                  </p>
+                  <a href="#" class="card-read-more">Baca Artikel ></a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="popular-hashtags">
+            <h2 class="section-heading">HASTAG TERPOPULER</h2>
+            <div class="hashtags-wrapper">
+              <a href="#" class="hashtag-pill">#eshbi</a>
+              <a href="#" class="hashtag-pill">#eshbiputraindonesia</a>
+              <a href="#" class="hashtag-pill">#Makloon</a>
+              <a href="#" class="hashtag-pill">#Skincaresehat</a>
+              <a href="#" class="hashtag-pill">#BPOM</a>
+              <a href="#" class="hashtag-pill">#Makloonmurah</a>
+              <a href="#" class="hashtag-pill">#CPKB</a>
+              <a href="#" class="hashtag-pill">#CPOTB</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer-container"></footer>
+
+    <button id="scrollTopBtn" title="Kembali ke atas">▲</button>
+    <a
+      href="https://wa.me/6287864563431?text=Halo,%20saya%20tertarik%20dengan%20layanan%20Anda."
+      class="floating-whatsapp"
+      target="_blank"
+    >
+      <img
+        src="assets/images/whatsapp-icon.png"
+        alt="Hubungi Kami di WhatsApp"
+      />
+    </a>
+
+    <script src="assets/javascript/scripts.js"></script>
+  </body>
+</html>
