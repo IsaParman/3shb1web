@@ -240,17 +240,29 @@
     padding: 60px 20px;
   }
   .stats-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 kolom */
+    /* 1. Ubah grid menjadi 3 kolom */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
     padding: 20px 30px;
   }
   .stat-box1 {
-    grid-column: 1 / -1; /* Kolom pertama mengambil lebar penuh */
+    grid-column: 1 / -1; /* Aturan ini tetap sama, akan otomatis span 3 kolom */
     text-align: center;
     margin-bottom: 20px;
   }
   .stat-box {
     text-align: center;
+  }
+
+  /* 2. Tambahkan kode ini untuk mengatur urutan */
+  .stats-container .stat-box:nth-of-type(1) { /* Brand Partner */
+    order: 1;
+  }
+  .stats-container .stat-box:nth-of-type(3) { /* Distribusi Produk */
+    order: 2; /* Dijadikan item kedua (tengah) */
+  }
+  .stats-container .stat-box:nth-of-type(2) { /* Kepuasan Pelanggan */
+    order: 3;
   }
 
   /* Features Section */
@@ -261,21 +273,44 @@
 
   /* Alur Maklon */
   .alur-maklon {
-    padding: 30px;
-  }
-  .steps-container {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px 20px;
-  }
-  .step {
-    width: 45%;
-  }
-  .step:not(:last-child)::after,
-  .steps-container.reversed .step:not(:last-child)::before {
-    content: ""; /* Sembunyikan panah di tablet */
+    padding: 30px; /* Memberi ruang di sekitar section */
   }
 
+  .steps-container,
+  .steps-container.reversed {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Membuat 2 kolom */
+    gap: 30px 25px; /* Memberi jarak antar langkah */
+  }
+
+  .steps-container.reversed {
+    margin-top: 30px; /* Memberi jarak dari blok langkah 1-4 di atasnya */
+  }
+
+  .step {
+    width: 100%; /* Lebar step mengikuti lebar kolom */
+  }
+  
+  /* Hapus semua panah */
+  .step::after,
+  .step::before {
+    content: none !important;
+  }
+  
+  /* Mengatur ulang urutan untuk blok kedua (langkah 5-8) */
+  .steps-container.reversed .step:nth-child(4) { /* Ini adalah step 5 di HTML */
+    order: 1;
+  }
+  .steps-container.reversed .step:nth-child(3) { /* Ini adalah step 6 di HTML */
+    order: 2;
+  }
+  .steps-container.reversed .step:nth-child(2) { /* Ini adalah step 7 di HTML */
+    order: 3;
+  }
+  .steps-container.reversed .step:nth-child(1) { /* Ini adalah step 8 di HTML */
+    order: 4;
+  }
+  
   /* Wujudkan Brand Section */
   .wujudkan-brand .hero-container {
     flex-direction: column;
@@ -284,6 +319,9 @@
   }
   .text-column {
     flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   /* Sertifikasi Section */
@@ -293,6 +331,13 @@
   .certifications-grid {
     grid-template-columns: repeat(2, 1fr); /* 2 kolom */
     gap: 25px;
+  }
+  /* Ganti dengan path gambar versi mobile Anda */
+  #section1,
+  #section2,
+  #section3 {
+    background-color: white; /* Warna hitam solid */
+    background-image: none;
   }
 }
 
