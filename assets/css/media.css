@@ -121,25 +121,36 @@
 
   /* Alur Maklon */
   .alur-maklon {
-    padding: 20px;
+    padding: 40px 20px;
+    min-height: auto;
   }
   .steps-container,
   .steps-container.reversed {
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 60px; /* Tambah jarak untuk panah */
     margin-top: 20px;
   }
   .step {
     width: 80%;
+    max-width: 300px;
   }
   .step:not(:last-child)::after,
   .steps-container.reversed .step:not(:last-child)::before {
     content: "▼"; /* Ubah panah menjadi ke bawah */
+    font-size: 1.5rem;
+    color: #cccccc;
+    position: absolute;
     top: auto;
-    bottom: -30px;
+    bottom: -40px; /* Posisikan di bawah step */
     left: 50%;
     transform: translateX(-50%);
+    right: auto; /* Reset posisi horizontal */
+  }
+  .steps-container.reversed .step:not(:last-child)::before {
+    content: "▲"; /* Panah ke atas untuk reversed flow */
+    bottom: auto;
+    top: -40px;
   }
 
   /* Wujudkan Brand Section */
