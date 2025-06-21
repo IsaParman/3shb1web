@@ -63,7 +63,7 @@
     /* 2. Pastikan gambar tidak diulang jika ada ruang kosong */
     background-repeat: no-repeat;
   }
-  
+
   .hero-content h1 {
     font-size: 2.5rem;
     line-height: 1.2;
@@ -211,7 +211,7 @@
 }
 
 /* =============================================== */
-/* TAMPILAN TABLET (768px - 1023px) */
+/* TAMPILAN TABLET (768px - 1024px) */
 /* =============================================== */
 @media (min-width: 768px) and (max-width: 1023px) {
   /* Penyesuaian Global */
@@ -241,7 +241,7 @@
   }
   .stats-container {
     /* 1. Ubah grid menjadi 3 kolom */
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 20px 30px;
   }
@@ -255,13 +255,16 @@
   }
 
   /* 2. Tambahkan kode ini untuk mengatur urutan */
-  .stats-container .stat-box:nth-of-type(1) { /* Brand Partner */
+  .stats-container .stat-box:nth-of-type(1) {
+    /* Brand Partner */
     order: 1;
   }
-  .stats-container .stat-box:nth-of-type(3) { /* Distribusi Produk */
+  .stats-container .stat-box:nth-of-type(3) {
+    /* Distribusi Produk */
     order: 2; /* Dijadikan item kedua (tengah) */
   }
-  .stats-container .stat-box:nth-of-type(2) { /* Kepuasan Pelanggan */
+  .stats-container .stat-box:nth-of-type(2) {
+    /* Kepuasan Pelanggan */
     order: 3;
   }
 
@@ -290,27 +293,31 @@
   .step {
     width: 100%; /* Lebar step mengikuti lebar kolom */
   }
-  
+
   /* Hapus semua panah */
   .step::after,
   .step::before {
     content: none !important;
   }
-  
+
   /* Mengatur ulang urutan untuk blok kedua (langkah 5-8) */
-  .steps-container.reversed .step:nth-child(4) { /* Ini adalah step 5 di HTML */
+  .steps-container.reversed .step:nth-child(4) {
+    /* Ini adalah step 5 di HTML */
     order: 1;
   }
-  .steps-container.reversed .step:nth-child(3) { /* Ini adalah step 6 di HTML */
+  .steps-container.reversed .step:nth-child(3) {
+    /* Ini adalah step 6 di HTML */
     order: 2;
   }
-  .steps-container.reversed .step:nth-child(2) { /* Ini adalah step 7 di HTML */
+  .steps-container.reversed .step:nth-child(2) {
+    /* Ini adalah step 7 di HTML */
     order: 3;
   }
-  .steps-container.reversed .step:nth-child(1) { /* Ini adalah step 8 di HTML */
+  .steps-container.reversed .step:nth-child(1) {
+    /* Ini adalah step 8 di HTML */
     order: 4;
   }
-  
+
   /* Wujudkan Brand Section */
   .wujudkan-brand .hero-container {
     flex-direction: column;
@@ -380,7 +387,7 @@
     height: 100vh; /* Membuat kontainer slider setinggi layar penuh */
     border-radius: 0;
     /* Hapus atau komentari properti aspect-ratio agar tidak membatasi tinggi */
-    /* aspect-ratio: 4 / 3; */ 
+    /* aspect-ratio: 4 / 3; */
   }
 
   .blog-slider-container .hero-section {
@@ -552,7 +559,7 @@
   }
   .image-value .makna-eshbi {
     width: 100%; /* Membuat lebar gambar 100% dari kontainer .image-value */
-    height: 100%;  /* Menjaga rasio aspek gambar agar tidak gepeng */
+    height: 100%; /* Menjaga rasio aspek gambar agar tidak gepeng */
     display: block; /* Menghilangkan spasi ekstra di bawah gambar */
     margin: 0 auto; /* Memastikan gambar tetap di tengah jika ada margin */
   }
@@ -677,10 +684,7 @@
 @media (max-width: 767px) {
   /* Bagian Klien Kami */
   .clients-section .clients-grid {
-    grid-template-columns: repeat(
-      2,
-      1fr
-    ); /* Ubah grid menjadi 2 kolom */
+    grid-template-columns: repeat(2, 1fr); /* Ubah grid menjadi 2 kolom */
     gap: 30px 15px; /* Sesuaikan jarak antar logo */
   }
 
@@ -714,7 +718,7 @@
 
   .products-grid {
     /* Diubah dari 1 kolom menjadi 2 kolom sesuai permintaan */
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     gap: 25px; /* Jarak antar-kartu bisa sedikit disesuaikan */
   }
 }
@@ -725,10 +729,7 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   /* Bagian Klien Kami */
   .clients-section .clients-grid {
-    grid-template-columns: repeat(
-      3,
-      1fr
-    ); /* Ubah grid menjadi 3 kolom */
+    grid-template-columns: repeat(3, 1fr); /* Ubah grid menjadi 3 kolom */
     max-width: 800px;
   }
 
@@ -846,5 +847,189 @@
   }
   .product-grid .product-title {
     font-size: 1.4rem;
+  }
+}
+
+/* =============================================== */
+/* MENCEGAH SCROLL HORIZONTAL (BERLAKU DI SEMUA UKURAN) */
+/* =============================================== */
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* =============================================== */
+/* TAMPILAN LAPTOP KECIL (1024px - 1366px) - GABUNGAN UNTUK SEMUA HALAMAN */
+/* =============================================== */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  /* --- Penyesuaian untuk index.html --- */
+  .hero-content h1 {
+    font-size: 3.8rem;
+  }
+  #index .features-grid,
+  .features-grid {
+    /* Menargetkan features-grid secara umum dan spesifik jika perlu */
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .steps-container,
+  .steps-container.reversed {
+    gap: 20px;
+  }
+  .text-column h1 {
+    font-size: 2.5rem;
+  }
+
+  /* --- Penyesuaian untuk blog.html --- */
+  .article-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .popular-section {
+    padding: 3rem 1.5rem;
+  }
+  #blog .popular-content-grid,
+  .popular-content-grid {
+    /* Menargetkan popular-content-grid */
+    grid-template-columns: 1fr;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* --- Penyesuaian untuk profile.html --- */
+  .profile-body .container,
+  .value-body .value-section {
+    max-width: 960px;
+  }
+  .mission-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  #profile .stats-grid,
+  .stats-section .stats-grid {
+    /* Menargetkan stats-grid */
+    grid-template-columns: repeat(3, 1fr);
+  }
+  #profile .certifications-grid,
+  #index .certifications-grid,
+  .certifications-grid {
+    /* Menargetkan certifications-grid */
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* --- Penyesuaian untuk kontak.html --- */
+  .kontak-body .container {
+    max-width: 960px;
+  }
+  .content-wrapper {
+    gap: 3rem;
+  }
+  .left-column {
+    flex: 1;
+  }
+  .right-column {
+    flex: 1.5;
+  }
+
+  /* --- Penyesuaian untuk service.html --- */
+  .clients-section .clients-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .products-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  .header-right {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 900px;
+  }
+}
+
+/* =============================================== */
+/* TAMPILAN RESOLUSI SANGAT BESAR / 4K (2560px ke atas) */
+/* =============================================== */
+@media (min-width: 2560px) {
+
+  /* --- Pengaturan Global untuk Kontainer Utama --- */
+  /* Tujuan utama di sini adalah memberi batas lebar maksimal pada kontainer utama 
+    agar teks dan konten tidak terlalu melebar dan tetap nyaman dibaca. 
+    Konten akan berada di tengah layar yang lebar.
+  */
+  .container, 
+  .stats-container, 
+  .main-container,
+  .hero-container,
+  .article-grid,
+  .popular-content-grid {
+    max-width: 1800px; /* Batas lebar maksimal untuk konten */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* --- Pengaturan Ukuran Font Global --- */
+  body {
+    font-size: 18px; /* Naikkan ukuran font dasar */
+  }
+
+  h1 {
+    font-size: 5rem; /* Naikkan ukuran font judul utama */
+  }
+
+  h2 {
+    font-size: 3.5rem; /* Naikkan ukuran font sub-judul */
+  }
+  
+  h3 {
+    font-size: 2rem;
+  }
+
+  /* --- Penyesuaian untuk index.html --- */
+  .hero-content h1 .title-main, 
+  .hero-content h1 .title-main2 {
+      font-size: 6rem; /* Perbesar lagi font hero */
+  }
+  
+  .features-grid {
+      grid-template-columns: repeat(4, 1fr); /* Pastikan tetap 4 kolom namun dengan jarak lebih */
+      gap: 40px;
+  }
+
+  .certifications-grid {
+      grid-template-columns: repeat(4, 1fr); /* Tampilkan 4 sertifikasi dalam satu baris */
+  }
+
+
+  /* --- Penyesuaian untuk blog.html --- */
+  .article-grid {
+      grid-template-columns: repeat(4, 1fr); /* Tampilkan 4 artikel per baris */
+  }
+
+
+  /* --- Penyesuaian untuk profile.html --- */
+  .mission-grid {
+      grid-template-columns: repeat(4, 1fr); /* Tampilkan 4 misi dalam satu baris */
+  }
+
+
+  /* --- Penyesuaian untuk service.html --- */
+  .clients-section .clients-grid {
+      grid-template-columns: repeat(6, 1fr); /* Tampilkan 6 logo klien per baris */
+      gap: 40px;
+  }
+
+  .products-grid {
+      grid-template-columns: repeat(3, 1fr); /* Tetap 3 produk tapi dengan visual lebih besar */
+      gap: 50px;
   }
 }
