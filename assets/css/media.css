@@ -48,12 +48,22 @@
 
   /* Hero Slider */
   .hero-section {
-    padding: 20px 20px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 80vh;
+    padding: 20px 20px; /* */
+    justify-content: center; /* */
+    align-items: center; /* */
+    text-align: center; /* */
+    height: 80vh; /* */
+    flex-direction: column;
+
+    /* --- TAMBAHKAN ATAU UBAH PROPERTI DI BAWAH INI --- */
+
+    /* 1. Ubah 'cover' menjadi 'contain' agar seluruh gambar muat */
+    background-size: contain;
+
+    /* 2. Pastikan gambar tidak diulang jika ada ruang kosong */
+    background-repeat: no-repeat;
   }
+  
   .hero-content h1 {
     font-size: 2.5rem;
     line-height: 1.2;
@@ -124,39 +134,36 @@
     padding: 40px 20px;
     min-height: auto;
   }
-  .steps-container,
-  .steps-container.reversed {
+  .steps-container {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 60px; /* Tambah jarak untuk panah */
+    gap: 30px; /* Jarak dikurangi karena tidak ada panah */
     margin-top: 20px;
+  }
+  .steps-container.reversed {
+    flex-direction: column-reverse; /* Tetap pertahankan untuk urutan yang benar */
+    margin-top: 30px;
   }
   .step {
     width: 80%;
     max-width: 300px;
+    position: relative;
   }
-  .step:not(:last-child)::after,
-  .steps-container.reversed .step:not(:last-child)::before {
-    content: "▼"; /* Ubah panah menjadi ke bawah */
-    font-size: 1.5rem;
-    color: #cccccc;
-    position: absolute;
-    top: auto;
-    bottom: -40px; /* Posisikan di bawah step */
-    left: 50%;
-    transform: translateX(-50%);
-    right: auto; /* Reset posisi horizontal */
-  }
-  .steps-container.reversed .step:not(:last-child)::before {
-    content: "▲"; /* Panah ke atas untuk reversed flow */
-    bottom: auto;
-    top: -40px;
+
+  /* Hapus semua panah di tampilan mobile */
+  .step::after,
+  .step::before {
+    content: none !important;
   }
 
   /* Wujudkan Brand Section */
+  .wujudkan-brand {
+    min-height: auto;
+  }
   .wujudkan-brand .hero-container {
     flex-direction: column;
-    padding: 20px;
+    padding: 40px 20px;
     gap: 30px;
     text-align: center;
   }
@@ -192,6 +199,14 @@
     width: 35px;
     height: 35px;
     font-size: 28px;
+  }
+
+  /* Ganti dengan path gambar versi mobile Anda */
+  #section1,
+  #section2,
+  #section3 {
+    background-color: white; /* Warna hitam solid */
+    background-image: none;
   }
 }
 
