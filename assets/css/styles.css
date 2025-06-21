@@ -512,14 +512,6 @@ ul {
   border-style: dashed;
   border-width: 4px;
 }
-.stamp-text {
-  color: #0a6847;
-  font-weight: 700;
-  font-size: 1.2rem;
-  border: 3px solid #0a6847;
-  padding: 5px 10px;
-  transform: rotate(-10deg);
-}
 .steps-container.reversed {
   margin-top: 80px;
 }
@@ -1216,7 +1208,7 @@ ul {
 .product-image-container img {
   width: 100%;
   height: 100%;
-object-fit: cover;
+  object-fit: cover;
   display: block;
 }
 .product-card h3 {
@@ -1323,4 +1315,3 @@ footer {
 .copyright p {
   margin: 0;
 }
-
