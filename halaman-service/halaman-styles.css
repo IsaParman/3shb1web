@@ -1,0 +1,96 @@
+.body-css {
+    background-color: #fdfdfd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-bottom: 50px;
+}
+
+.product-section-container {
+    max-width: 1100px;
+    width: 100%;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #006442; /* Warna hijau tua seperti pada gambar */
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Dekorasi garis di atas judul */
+
+
+.section-description {
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+.product-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /* Jarak antar kotak produk */
+    flex-wrap: wrap; /* Agar responsif di layar kecil */
+}
+
+.product-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 24px; /* Sudut yang sangat membulat */
+    padding: 1.5rem;
+    display: flex;
+    flex: 1;
+    max-width: 500px; /* Batas lebar maksimum per kartu */
+    min-width: 300px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Bayangan halus */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.product-image-placeholder {
+    width: 130px;
+    min-height: 180px;
+    border: 2px dashed #e0e0e0; /* Placeholder untuk gambar */
+    border-radius: 16px;
+    margin-right: 1.5rem;
+    flex-shrink: 0; /* Mencegah placeholder menyusut */
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0 0 0.5rem 0;
+}
+
+.product-description,
+.product-variants {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.product-variants strong {
+     display: block;
+     margin-bottom: 0.5rem;
+     color: #333;
+}
