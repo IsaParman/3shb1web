@@ -1,6 +1,6 @@
 /* =============================================== */
 /* MEDIA QUERIES UNTUK TAMPILAN RESPONSIVE */
-/* =============================================== */
+/* ===============INDEX.HTML================================ */
 
 /* =============================================== */
 /* TAMPILAN PONSEL (Hingga 767px) */
@@ -331,9 +331,18 @@
 
   /* Slider di Halaman Blog */
   .blog-slider-container {
-    width: 100%; /* Lebar penuh tanpa margin */
+    width: 100%;
+    height: 100vh; /* Membuat kontainer slider setinggi layar penuh */
     border-radius: 0;
-    aspect-ratio: 4 / 3; /* Sesuaikan rasio agar tidak terlalu tinggi */
+    /* Hapus atau komentari properti aspect-ratio agar tidak membatasi tinggi */
+    /* aspect-ratio: 4 / 3; */ 
+  }
+
+  .blog-slider-container .hero-section {
+    height: 100%; /* Pastikan setiap slide mengisi tinggi kontainer */
+    background-size: cover; /* Membuat gambar latar menutupi seluruh area slide */
+    background-position: center; /* Memusatkan gambar di tengah */
+    padding: 0; /* Menghapus padding agar gambar menempel ke tepi */
   }
 
   /* Grid Artikel Utama */
@@ -496,6 +505,12 @@
   .certification-item h3 {
     font-size: 1.2em;
   }
+  .image-value .makna-eshbi {
+    width: 100%; /* Membuat lebar gambar 100% dari kontainer .image-value */
+    height: 100%;  /* Menjaga rasio aspek gambar agar tidak gepeng */
+    display: block; /* Menghilangkan spasi ekstra di bawah gambar */
+    margin: 0 auto; /* Memastikan gambar tetap di tengah jika ada margin */
+  }
 }
 
 /* =============================================== */
@@ -604,5 +619,187 @@
   /* Info box tetap 2 kolom (sesuai default style) */
   .info-box {
     width: calc(50% - 20px); /* Sesuaikan kalkulasi jika gap berubah */
+  }
+}
+
+/* =============================================== */
+/* MEDIA QUERIES UNTUK HALAMAN SERVICE (service.html) */
+/* =============================================== */
+
+/* =============================================== */
+/* TAMPILAN PONSEL (Hingga 767px) */
+/* =============================================== */
+@media (max-width: 767px) {
+  /* Bagian Klien Kami */
+  .clients-section .clients-grid {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Ubah grid menjadi 2 kolom */
+    gap: 30px 15px; /* Sesuaikan jarak antar logo */
+  }
+
+  .clients-section h2 {
+    font-size: 24px; /* Perkecil ukuran judul */
+  }
+
+  .clients-section .subtitle {
+    font-size: 15px; /* Perkecil ukuran sub-judul */
+  }
+
+  /* Bagian Jenis Produk */
+  .products-section {
+    padding: 60px 20px; /* Kurangi padding */
+  }
+
+  .products-header {
+    flex-direction: column; /* Susun header secara vertikal */
+    gap: 15px; /* Beri jarak antar teks */
+    text-align: center; /* Pusatkan teks */
+    margin-bottom: 40px;
+  }
+
+  .products-section .header-left h2 {
+    font-size: 26px; /* Perkecil ukuran judul kiri */
+  }
+
+  .header-right p {
+    font-size: 16px; /* Perkecil ukuran teks kanan */
+  }
+
+  .products-grid {
+    /* Diubah dari 1 kolom menjadi 2 kolom sesuai permintaan */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 25px; /* Jarak antar-kartu bisa sedikit disesuaikan */
+  }
+}
+
+/* =============================================== */
+/* TAMPILAN TABLET (768px - 1023px) */
+/* =============================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Bagian Klien Kami */
+  .clients-section .clients-grid {
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* Ubah grid menjadi 3 kolom */
+    max-width: 800px;
+  }
+
+  /* Bagian Jenis Produk */
+  .products-header {
+    gap: 20px; /* Sedikit kurangi jarak pada header */
+    align-items: center;
+  }
+
+  .products-section .header-left h2 {
+    font-size: 28px;
+  }
+
+  .header-right p {
+    font-size: 17px;
+  }
+
+  .products-grid {
+    max-width: 800px; /* Batasi lebar grid agar tidak terlalu renggang */
+  }
+}
+
+/* =============================================== */
+/* MEDIA QUERIES UNTUK HALAMAN */
+/* =============================================== */
+
+/* CATATAN: 
+  Class `.product-grid` pada halaman haircare berbeda dari `.products-grid` (dengan 's') pada halaman service.
+  Maka, perlu ditambahkan style dasar terlebih dahulu sebelum media query.
+*/
+
+/* Style Dasar untuk Desktop (jika belum ada) */
+.product-section-container {
+  padding: 60px 20px;
+}
+.product-section-container .section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.product-section-container .section-description {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+}
+.product-grid {
+  /* Style untuk halaman haircare */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.product-grid .product-card {
+  background-color: #ffffff;
+  border: 1px solid #e9e9e9;
+  border-radius: 12px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.product-grid .product-image-placeholder {
+  height: 200px;
+  background-color: #f0f0f0;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.product-grid .product-info {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.product-grid .product-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #1e633f;
+  margin: 0 0 10px 0;
+}
+.product-grid .product-description {
+  color: #555;
+  margin: 0 0 20px 0;
+  flex-grow: 1; /* Mendorong variasi ke bawah */
+}
+.product-grid .product-variants {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* =============================================== */
+/* TAMPILAN PONSEL (Hingga 767px) */
+/* =============================================== */
+@media (max-width: 767px) {
+  .product-section-container {
+    padding: 40px 15px;
+  }
+  .product-section-container .section-title {
+    font-size: 2rem; /* Perkecil judul */
+  }
+  .product-grid {
+    grid-template-columns: 1fr; /* Ubah grid menjadi 1 kolom */
+  }
+}
+
+/* =============================================== */
+/* TAMPILAN TABLET (768px - 1023px) */
+/* =============================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .product-grid {
+    max-width: 720px; /* Batasi lebar agar tidak terlalu renggang */
+    gap: 20px;
+  }
+  .product-grid .product-title {
+    font-size: 1.4rem;
   }
 }
