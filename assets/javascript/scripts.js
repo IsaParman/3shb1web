@@ -2,6 +2,8 @@
  * =================================================================
  * SCRIPT UTAMA (FINAL DENGAN NAVIGASI DINAMIS & MULTI-BAHASA)
  * =================================================================
+ * Perubahan:
+ * - Menambahkan logika untuk menonaktifkan tombol bahasa khusus di halaman article-detail.html
  */
 document.addEventListener("DOMContentLoaded", () => {
   /**
@@ -54,8 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /**
-   * FUNGSI BARU: Mengatur semua link navigasi untuk dikontrol oleh JS.
-   * Ini adalah solusi untuk masalah path di sub-folder.
+   * Mengatur semua link navigasi untuk dikontrol oleh JS.
    */
   const setupDynamicNavigation = () => {
     const links = document.querySelectorAll('a[data-page]');
@@ -74,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /**
-   * FUNGSI DIPERBARUI: Menandai link aktif berdasarkan data-page.
+   * Menandai link aktif berdasarkan data-page.
    */
   const setActiveLink = () => {
     const currentPath = window.location.pathname;
@@ -83,15 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
     links.forEach(link => {
       const pageName = link.dataset.page; // "index.html", "profile.html", dll.
       
-      // Cek apakah path saat ini diakhiri dengan nama halaman dari data-page
       if (currentPath.endsWith(pageName)) {
         link.classList.add('active');
       }
       
-      // Kasus khusus untuk halaman utama (root)
       const isRootPage = currentPath === '/' || currentPath === '/en/';
       if (isRootPage && pageName === 'index.html') {
-        // Cari link beranda secara spesifik dan aktifkan
         const homeLink = document.querySelector('a[data-page="index.html"]');
         if(homeLink) homeLink.classList.add('active');
       }
@@ -99,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /**
-   * Mengatur tombol pilihan bahasa (tidak perlu diubah).
+   * Mengatur tombol pilihan bahasa.
    */
   const setupLanguageSwitcher = () => {
     const switcher = document.getElementById("lang-switcher");
@@ -129,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /**
-   * FUNGSI DIPERBARUI: Memuat semua komponen dan menjalankan semua skrip.
+   * Memuat semua komponen dan menjalankan semua skrip inisialisasi.
    */
   const initializePartials = async () => {
     const currentPath = window.location.pathname;
@@ -145,11 +143,24 @@ document.addEventListener("DOMContentLoaded", () => {
         loadHTML(footerFile, "footer-container"),
       ]);
 
-      // Hapus 'updateNavigationLinks' dan panggil fungsi yang baru
+      // Jalankan fungsi-fungsi setup setelah header dan footer dimuat
       setupHamburger();
-      setupLanguageSwitcher();
-      setupDynamicNavigation(); // <- INI FUNGSI BARU UNTUK NAVIGASI
-      setActiveLink();       // <- FUNGSI INI SEKARANG BEKERJA DENGAN BENAR
+
+      // LOGIKA BARU: Cek halaman dan tentukan status tombol bahasa
+      if (window.location.pathname.includes('article-detail.html')) {
+        // Jika di halaman detail artikel, cari tombolnya lalu nonaktifkan
+        const langSwitcherButton = document.getElementById('lang-switcher');
+        if (langSwitcherButton) {
+          langSwitcherButton.style.pointerEvents = 'none';
+          langSwitcherButton.style.opacity = '0.5';
+        }
+      } else {
+        // Jika di halaman lain, jalankan fungsi normal untuk switcher bahasa
+        setupLanguageSwitcher();
+      }
+
+      setupDynamicNavigation();
+      setActiveLink();
     } catch (error) {
       console.error("Salah satu komponen penting gagal dimuat.", error);
     } finally {

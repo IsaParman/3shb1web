@@ -1033,3 +1033,42 @@ body {
       gap: 50px;
   }
 }
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .section-header h2 {
+      font-size: 2rem; /* 32px */
+  }
+
+  .section-header p {
+      font-size: 1rem; /* 16px */
+  }
+  
+  .testimonials-grid {
+      flex-direction: column; /* Stack cards vertically */
+      align-items: center; /* Center the cards in the column */
+  }
+
+  .testimonial-card {
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box; /* <-- TAMBAHKAN BARIS INI */
+  }
+}
+
+/* News dan Insight */
+/* Tampilan Mobile */
+@media (max-width: 768px) {
+  .news-section3 .article-grid {
+    grid-template-columns: 1fr; /* 1 kolom */
+  }
+}
+/* TAMPILAN LAPTOP KECIL (1024px - 1366px) */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .article-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

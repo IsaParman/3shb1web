@@ -115,14 +115,15 @@ ul {
   background-color: white;
   color: #333;
   padding: 7px 5px;
-  border-radius: 20px;
+  border-radius: 25px;
   gap: 6px;
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
+  
 }
 .language-selector img {
-  width: 30px;
+  width: 22px;
   height: 20px;
   border-radius: 50%;
   border: 1px solid #ddd;
@@ -715,7 +716,7 @@ ul {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  min-height: 200px;
+  min-height: 200px; /* Memberikan tinggi minimum saat loading */
 }
 .article-card {
   background-color: #ffffff;
@@ -822,6 +823,11 @@ ul {
   background-color: #1e633f;
   color: #ffffff;
 }
+.pagination-ellipsis {
+    padding: 0 5px;
+    color: #888;
+    font-weight: 600;
+}
 .popular-content-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -864,6 +870,150 @@ ul {
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
+.hashtag-pill:hover {
+    background-color: #0a6847;
+}
+
+/* =============================================== */
+/* HALAMAN ARTIKEL TUNGGAL (article-detail.html) */
+/* =============================================== */
+#single-article-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 40px;
+}
+
+.article-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.article-header h1 {
+    font-size: 2.8em;
+    color: #1e633f;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.article-meta {
+    font-size: 0.95em;
+    color: #777;
+}
+
+.article-featured-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 30px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.article-content {
+    line-height: 1.8;
+    font-size: 1.1em;
+    color: #333;
+    max-width: 800px; /* Batasi lebar konten untuk keterbacaan */
+    margin: 0 auto;
+    /* padding: 0 20px; Ini sudah diatur di container, bisa dihapus di sini jika sudah cukup */
+}
+
+/* Styling untuk elemen HTML yang mungkin ada di konten WordPress */
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6 {
+    color: #1e633f;
+    margin-top: 1.8em;
+    margin-bottom: 0.8em;
+    font-weight: 600;
+}
+.article-content h2 { font-size: 2em; }
+.article-content h3 { font-size: 1.6em; }
+.article-content h4 { font-size: 1.3em; }
+
+.article-content p {
+    margin-bottom: 1em;
+}
+
+.article-content ul,
+.article-content ol {
+    margin-bottom: 1em;
+    padding-left: 25px; /* Indentasi daftar */
+}
+
+.article-content li {
+    margin-bottom: 0.5em;
+}
+
+.article-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto; /* Pusat gambar */
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.article-content figure { /* Untuk gambar dengan caption dari WP */
+    margin: 20px auto;
+    text-align: center;
+}
+.article-content figcaption {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px;
+}
+
+.article-content a {
+    color: #007bff;
+    text-decoration: underline;
+}
+.article-content a:hover {
+    color: #0056b3;
+}
+
+.article-content strong {
+    font-weight: 700;
+}
+
+.article-content em {
+    font-style: italic;
+}
+
+.article-content blockquote {
+    border-left: 5px solid #1e633f;
+    padding-left: 20px;
+    margin: 20px 0;
+    font-style: italic;
+    color: #555;
+    background-color: #f9f9f9;
+    padding: 15px 20px;
+    border-radius: 4px;
+}
+
+.article-actions {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.back-to-blog-button {
+    display: inline-block;
+    background-color: #1e633f;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-blog-button:hover {
+    background-color: #0a6847;
+}
+
 
 /* =============================================== */
 /* HALAMAN KONTAK (kontak.html) */
@@ -1039,22 +1189,16 @@ ul {
 .mission-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3rem 4rem;
+  gap: 1.5rem 4rem;
 }
 .mission-item {
   text-align: center;
 }
+
 .mission-item h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #222;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-.mission-item p {
   font-size: 1rem;
   color: #666;
-  line-height: 1.6;
+  line-height: 1.5;
   margin-top: 0;
 }
 
@@ -1314,4 +1458,232 @@ footer {
 }
 .copyright p {
   margin: 0;
+}
+
+/* Section Wrapper */
+.testimonials-section {
+  padding: 60px 20px;
+}
+
+.container2 {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Title */
+.section-header2 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header2 h2 {
+  font-size: 2.5rem; /* 40px */
+  color: #006400;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.section-header2 p {
+  font-size: 1.125rem; /* 18px */
+  color: #4a5568;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Grid for Testimonial Cards */
+.testimonials-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap; /* Allows cards to wrap to the next line on smaller screens */
+}
+
+/* Individual Testimonial Card */
+.testimonial-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  flex: 1; /* Allows cards to grow equally */
+  min-width: 280px; /* Prevents cards from becoming too narrow */
+  max-width: 350px; /* Prevents cards from becoming too wide */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Card Header Section */
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #e2e8f0; /* Placeholder color */
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px #cbd5e0;
+  margin-right: 15px;
+}
+
+/* You can replace the div with an <img> tag like this: */
+/*
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+*/
+
+.profile-info h4 {
+  margin: 0;
+  font-size: 1.25rem; /* 20px */
+  color: #1a202c;
+  font-weight: 600;
+}
+
+.profile-info .title {
+  margin: 0;
+  font-size: 0.9rem; /* 14.4px */
+  color: #718096;
+}
+
+/* Card Body (The testimonial text) */
+.card-body p {
+  margin: 0 0 1em 0;
+  font-size: 0.95rem; /* 15.2px */
+  line-height: 1.7;
+  color: #4a5568;
+}
+
+.card-body p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Header (Bisa digabung dengan style sebelumnya) */
+.section-header3 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header3 p {
+  font-size: 1.125rem;
+  color: #4a5568;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* === News & Insight Section Styling === */
+
+.news-section3 {
+  padding: 60px 0;
+}
+
+.section-header3 .green-title3 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #006400; /* Warna hijau modern */
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+/* =================================================================== */
+/* KUSTOMISASI UNTUK GRID ARTIKEL DI HALAMAN UTAMA (index.html) */
+/* =================================================================== */
+
+/* Menargetkan grid artikel yang berada di dalam section 'News & Insight' */
+.news-section3 .article-grid {
+  /* Mengatur grid utama menjadi 3 kolom */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; /* Jarak antar artikel */
+  padding: 2rem;
+  max-width: 1400px; /* Perlebar sedikit untuk 3 kolom */
+  margin: 0 auto;
+}
+
+/* Styling untuk setiap kartu artikel di dalamnya.
+  Ini akan menimpa (override) beberapa gaya .article-card yang ada
+  agar lebih sesuai dengan contoh gambar awal.
+*/
+.news-section3 .article-card {
+  background-color: #ffffff;
+  border: none; /* Menghilangkan border agar terlihat lebih bersih */
+  border-radius: 0; /* Menghilangkan radius sudut */
+  box-shadow: none; /* Menghilangkan bayangan */
+  display: flex;
+  flex-direction: column;
+  text-align: left; /* Teks rata kiri */
+}
+
+/* Wadah gambar */
+.news-section3 .card-image-container {
+  aspect-ratio: 16 / 9; /* Rasio gambar 4:3 */
+  background-color: #e0e0e0; /* Warna placeholder abu-abu */
+  margin-bottom: 20px;
+}
+
+.news-section3 .card-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Menghilangkan tanggal overlay yang ada di desain blog */
+.news-section3 .date-overlay {
+  display: none;
+}
+
+/* Konten di bawah gambar */
+.news-section3 .card-content {
+  padding: 0; /* Hapus padding agar rata kiri penuh */
+}
+
+/* Judul artikel */
+.news-section3 .card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+/* Tambahkan meta data (tanggal) seperti contoh */
+.news-section3 .card-content::before {
+  content: attr(data-date); /* Akan mengambil tanggal dari atribut data */
+  display: block;
+  font-size: 14px;
+  color: #888888;
+  margin-bottom: 15px;
+}
+
+/* Kutipan/excerpt */
+.news-section3 .card-excerpt {
+  font-size: 16px;
+  color: #555555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Link "Read More" */
+.news-section3 .card-read-more {
+  font-size: 15px;
+  font-weight: 600;
+  color: #008080; /* Warna hijau toska */
+  align-self: flex-start; /* Rata kiri */
+}
+.news-section3 .card-read-more:hover {
+  text-decoration: underline;
+  color: #008080;
 }
