@@ -53,13 +53,6 @@ body {
     font-size: 1.2rem;
   }
 
-  #scrollTopBtn {
-    left: 20px;
-    width: 35px;
-    height: 35px;
-    padding: 12px;
-  }
-
   .floating-whatsapp {
     right: 20px;
     width: 35px;
@@ -235,9 +228,9 @@ body {
     min-height: auto;
   }
 
-  #index .certifications-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+  .sertifikasi-eshbi .certifications-grid {
+    grid-template-columns: repeat(2, 1fr); /* Membuat 2 kolom */
+    gap: 20px; /* Mungkin perlu sedikit mengurangi jarak antar item */
   }
 
   .certification-item p {

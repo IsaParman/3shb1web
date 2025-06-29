@@ -238,27 +238,10 @@ document.addEventListener("DOMContentLoaded", () => {
     startSlider();
   };
 
-  const initScrollTopButton = () => {
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
-    if (!scrollTopBtn) return;
-    window.addEventListener("scroll", () => {
-      const isScrolled =
-        document.body.scrollTop > 100 ||
-        document.documentElement.scrollTop > 100;
-      scrollTopBtn.style.display = isScrolled ? "block" : "none";
-    });
-    scrollTopBtn.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    });
-  };
 
   // --- EKSEKUSI SEMUA FUNGSI ---
   initializePartials();
   initSlider();
-  initScrollTopButton();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
