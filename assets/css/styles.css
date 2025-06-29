@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins";
   background-color: white;
 }
 .fade-in-section {
@@ -448,24 +448,104 @@ ul {
 /* Alur Maklon Section */
 .alur-maklon {
   background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 40px;
-  min-height: 100vh;
+  min-height: auto; /* Mengubah tinggi agar sesuai konten */
 }
+
 .makloon-flow {
   width: 100%;
   max-width: 1200px;
   text-align: center;
+  margin: 0 auto; /* Memastikan posisi tengah */
 }
+
 .makloon-flow .main-title {
   color: #0a6847;
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 60px;
 }
-.steps-container {
+
+.alur-maklon-table-container {
+  width: 100%;
+  overflow-x: auto; /* Agar bisa di-scroll di layar kecil jika perlu */
+}
+
+.alur-maklon-table {
+  width: 100%;
+  border-collapse: collapse; /* Menghilangkan jarak antar border sel */
+  margin-top: 20px;
+}
+
+.alur-maklon-table td {
+  width: 25%; /* Membagi 4 kolom sama rata */
+  padding: 15px;
+  vertical-align: top; /* Konten mulai dari atas */
+  border: 1px solid #e0e0e0; /* Border abu-abu tipis untuk setiap sel */
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  background-color: #f9f9f9; /* Sedikit warna latar pada item */
+  padding: 25px 20px;
+  border-radius: 8px;
+  height: 100%; /* Membuat setiap kotak sama tinggi */
+  box-sizing: border-box;
+}
+
+.step-icon {
+  width: 100px;
+  height: 100px;
+  border: 4px solid #0a6847;
+  background-color: #0a6847;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.step-icon i {
+  font-size: 45px;
+}
+
+.step-number {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 35px;
+  height: 35px;
+  background-color: white;
+  color: #0a6847;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 2px solid #0a6847;
+}
+
+.step-title {
+  color: #0a6847;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.step-description {
+  color: #555555;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  padding: 0 5px;
+}
+/* .steps-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -531,7 +611,7 @@ ul {
   font-size: 0.9rem;
   line-height: 1.5;
   padding: 0 5px;
-}
+} */
 .approved-icon {
   background-color: white;
   border-style: dashed;
@@ -559,7 +639,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  padding: 30px 20px;
 }
 .wujudkan-brand .hero-container {
   display: flex;
@@ -623,7 +703,6 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
 }
 .sertifikasi-eshbi .container {
   max-width: 1200px;
@@ -1136,7 +1215,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  padding: 80px 0;
   margin: 0;
   padding: 2rem;
   box-sizing: border-box;
@@ -1406,7 +1485,7 @@ ul {
 footer {
   background-color: #e9e9e9;
   color: #333;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 .map-container {
   text-align: center;

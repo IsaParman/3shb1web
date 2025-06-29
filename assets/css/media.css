@@ -157,12 +157,37 @@ body {
     gap: 40px;
   }
 
-  .alur-maklon {
-    padding: 40px 20px;
-    min-height: auto;
+  .alur-maklon-table {
+    margin-bottom: 20px; /* Memberi jarak antar dua tabel */
   }
 
-  .steps-container {
+  .alur-maklon-table:last-child {
+    margin-bottom: 0;
+  }
+
+  .alur-maklon-table tr {
+    display: flex; /* Mengubah baris tabel menjadi flex container */
+    flex-wrap: wrap; /* Memungkinkan sel (item) untuk pindah ke baris baru */
+  }
+
+  .alur-maklon-table td {
+    display: block; /* Mengubah sel dari 'table-cell' menjadi 'block' */
+    width: 50%; /* Mengatur lebar setiap sel menjadi 50% untuk menciptakan 2 kolom */
+    padding: 8px; /* Memberi jarak (gutter) antar sel */
+    box-sizing: border-box; /* Memastikan padding tidak menambah total lebar */
+    border: none; /* Menghilangkan border pada sel karena sudah ada di .step-item */
+  }
+
+  /* Penyesuaian ukuran font agar pas di mobile */
+  .step-title {
+    font-size: 1rem;
+  }
+
+  .step-description {
+    font-size: 0.85rem;
+  }
+
+  /* .steps-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -184,7 +209,7 @@ body {
   .step::after,
   .step::before {
     content: none !important;
-  }
+  } */
 
   .wujudkan-brand {
     min-height: auto;
@@ -569,7 +594,7 @@ body {
     padding: 30px;
   }
 
-  .steps-container,
+  /* .steps-container,
   .steps-container.reversed {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -600,7 +625,7 @@ body {
   }
   .steps-container.reversed .step:nth-child(1) {
     order: 4;
-  }
+  } */
 
   .wujudkan-brand .hero-container {
     flex-direction: column;
@@ -748,14 +773,14 @@ body {
 /* 3. TAMPILAN DESKTOP (1024px ke atas) */
 /* =============================================== */
 @media (min-width: 1024px) {
-  /* Alur Maklon - Penyesuaian Panah */
+  /* Alur Maklon - Penyesuaian Panah
   .step:not(:last-child)::after {
     transform: translateX(350%);
   }
 
   .steps-container.reversed .step:not(:last-child)::before {
     right: -35px;
-  }
+  } */
 
   /* Blog & Popular Section Padding */
   .article-grid {
@@ -780,10 +805,10 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .steps-container,
+  /* .steps-container,
   .steps-container.reversed {
     gap: 20px;
-  }
+  } */
 
   .text-column h1 {
     font-size: 2.5rem;
