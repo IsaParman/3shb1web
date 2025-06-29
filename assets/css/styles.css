@@ -1,12 +1,24 @@
-/* =============================================== */
-/* STYLES GLOBAL & UMUM (Tidak diubah) */
-/* =============================================== */
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   background-color: white;
 }
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
 
+/* Saat kelas 'is-visible' ditambahkan oleh JavaScript, 
+  elemen akan kembali ke posisi normal dan menjadi terlihat sepenuhnya.
+*/
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+main {
+  padding-top: 80px; /* Mendorong konten utama ke bawah sebesar tinggi navbar */
+}
 a {
   text-decoration: none;
   color: inherit;
@@ -69,16 +81,28 @@ ul {
 .navbar {
   background-color: #1e633f;
   color: white;
-  padding: 0 2rem;
-  height: 107px;
+  padding: 0 2rem 0 0;
+  height: 80px;
+  /* Properti Baru untuk Efek Scroll */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Memastikan navbar selalu di atas konten lain */
+  transition: transform 0.3s ease-in-out; /* Animasi halus saat tampil/sembunyi */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Bayangan agar terlihat lebih baik di atas konten */
+}
+.navbar.navbar-hidden {
+  transform: translateY(-100%);
 }
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
+  width: 100%; /* Membuat container memenuhi lebar penuh */
+  /* Hapus max-width dan margin auto */
+  padding: 0 5rem; /* Menambahkan padding kiri-kanan agar menu kanan tidak mepet */
+  box-sizing: border-box; /* Memastikan padding tidak menambah lebar total */
 }
 .nav-group-right {
   display: flex;
